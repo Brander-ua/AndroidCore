@@ -19,7 +19,7 @@ ext {
     siteUrl = 'https://code.branderstudio.com/mobile/androidappcore'
     gitUrl = 'git@code.branderstudio.com:mobile/androidappcore.git'
 
-    libraryVersion = '1.0.0'
+    libraryVersion = '1.0.1'
 
     developerId = 'alexhimik'
     developerName = 'Oleksii Sarapym'
@@ -37,7 +37,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 100
-        versionName "1.0.0"
+        versionName "1.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
