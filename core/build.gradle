@@ -2,13 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'com.github.dcendents.android-maven'
 
 ext {
 
-    bintrayRepo = "BranderAndroidAppCore"
-    bintrayName = "ua.brander.core"
+    PUBLISH_GROUP_ID = 'ua.brander.core'
+    PUBLISH_VERSION = '1.1.0'
+    PUBLISH_ARTIFACT_ID = 'ua-brander-core'
 
     publishedGroupId = 'ua.brander.core'
     libraryName = 'core'
@@ -19,10 +18,10 @@ ext {
     siteUrl = 'https://code.branderstudio.com/mobile/androidappcore'
     gitUrl = 'git@code.branderstudio.com:mobile/androidappcore.git'
 
-    libraryVersion = '1.0.1'
+    libraryVersion = '1.1.0'
 
     developerId = 'alexhimik'
-    developerName = 'Oleksii Sarapym'
+    developerName = 'Oleksii Sarapyn'
     developerEmail = 'as@branderstudio.com'
 
     licenseName = 'The Apache Software License, Version 2.0'
@@ -30,14 +29,16 @@ ext {
     allLicenses = ["Apache-2.0"]
 }
 
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 100
-        versionName "1.0.1"
+        versionCode 110
+        versionName "1.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -59,17 +60,13 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-rc03'
     implementation 'com.google.dagger:dagger:2.23.1'
 
+    implementation "android.arch.lifecycle:extensions:2.1.0"
+    annotationProcessor "android.arch.lifecycle:compiler:2.1.0"
+
     kapt 'androidx.annotation:annotation:1.1.0'
     kapt 'com.google.dagger:dagger-compiler:2.23.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-}
-
-//Add these lines to publish library to bintray. This is the readymade scripts made by github user nuuneoi to make uploading to bintray easy.
-//Place it at the end of the file
-if (project.rootProject.file('local.properties').exists()) {
-    apply from: 'https://raw.githubusercontent.com/wajahatkarim3/JCenter-Gradle-Scripts/master/install.gradle'
-    apply from: 'https://raw.githubusercontent.com/wajahatkarim3/JCenter-Gradle-Scripts/master/bintray.gradle'
 }

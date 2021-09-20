@@ -15,9 +15,9 @@
  */
 package ua.brander.core.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ua.brander.core.exception.Failure
+import ua.brander.core.livedata.SingleLiveEvent
 
 /**
  * Base ViewModel class with default Failure handling.
@@ -25,7 +25,7 @@ import ua.brander.core.exception.Failure
  * @see Failure
  */
 abstract class BaseViewModel : ViewModel() {
-    var failure: MutableLiveData<Failure> = MutableLiveData()
+    var failure: SingleLiveEvent<Failure> = SingleLiveEvent()
 
     protected fun handleFailure(failure: Failure) {
         this.failure.value = failure
