@@ -1,13 +1,6 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-ext {
-
-    PUBLISH_GROUP_ID = 'ua.brander.core'
-    PUBLISH_VERSION = '1.1.0'
-    PUBLISH_ARTIFACT_ID = 'ua-brander-core'
-}
-
 task androidSourcesJar(type: Jar) {
     archiveClassifier.set('sources')
     if (project.plugins.findPlugin("com.android.library")) {
