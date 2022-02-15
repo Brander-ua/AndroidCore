@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 ext {
 
     PUBLISH_GROUP_ID = 'ua.brander.core'
-    PUBLISH_VERSION = '1.1.1'
+    PUBLISH_VERSION = '1.1.2'
     PUBLISH_ARTIFACT_ID = 'ua-brander-core'
 
     publishedGroupId = 'ua.brander.core'
@@ -18,7 +18,7 @@ ext {
     siteUrl = 'https://code.branderstudio.com/mobile/androidappcore'
     gitUrl = 'git@code.branderstudio.com:mobile/androidappcore.git'
 
-    libraryVersion = '1.1.1'
+    libraryVersion = '1.1.2'
 
     developerId = 'alexhimik'
     developerName = 'Oleksii Sarapyn'
@@ -37,7 +37,7 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 111
+        versionCode 112
         versionName PUBLISH_VERSION
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -46,6 +46,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
@@ -69,4 +77,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    compileOnly 'com.github.pengrad:jdk9-deps:1.0'
 }
